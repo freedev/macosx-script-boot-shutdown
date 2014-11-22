@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+<!--
+
+    You should customize the following placeholders:
+
+- BOOT.SHUTDOWN.SERVICE : If you don't know, leave it as is
+- SCRIPT_PATH : the path where the boot-shutdown.sh script is stored. 
+- LOG_PATH : the path where the logs are stored. If you don't care about logs, use: /tmp
+
+-->
+
+<key>Label</key>
+<string>BOOT.SHUTDOWN.SERVICE</string>
+
+<key>ProgramArguments</key>
+<array>
+  <string>SCRIPT_PATH/boot-shutdown.sh</string>
+</array>
+
+<!--
+set RunAtLoad false if you don't want that script starts 
+automatically every time your mac os x boots
+-->
+<key>RunAtLoad</key>
+<true/>
+
+<key>WorkingDirectory</key>
+<string>SCRIPT_PATH</string>
+
+<key>StandardOutPath</key>
+<string>LOG_PATH/boot-shutdown.log</string>
+
+<key>StandardErrorPath</key>
+<string>LOG_PATH/boot-shutdown.err</string>
+
+<key>ExitTimeOut</key>
+<integer>600</integer>
+
+</dict>
+</plist>
+
