@@ -19,13 +19,13 @@ When you want start the virtual machine type the following command:
 
     sudo launchctl load -w /Library/LaunchDaemons/boot-shutdown-script.plist
 
-If you want stop the VM (and the  you should type the following command:
+If you want stop the script (and the  you should type the following command:
 
     sudo launchctl unload -w /Library/LaunchDaemons/boot-shutdown-script.plist
 
 The script will be started machine at every host boot.
-Set into `boot-shutdown-script.plist` the field `RunAtLoad` to `false` if you don't want that the VM starts automatically every time your mac os x boots.
-When RunAtLoad is set to false, after the load you must start and stop the VM using the following command:
+Set into `boot-shutdown-script.plist` the field `RunAtLoad` to `false` if you don't want that the script starts automatically every time your mac os x boots.
+When RunAtLoad is set to false, after the load you must start and stop the script using the following command:
 
     sudo launchctl start BOOT.SHUTDOWN.SERVICE
     sudo launchctl stop BOOT.SHUTDOWN.SERVICE
