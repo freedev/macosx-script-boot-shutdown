@@ -5,29 +5,26 @@ A simple Mac OS X configuration and bash script to execute some commands during 
 
 ## Install
 
-You should customize the following placeholders inside the file boot-shutdown-script.list:
+You should customize the following placeholders inside the file boot-shutdown-script.plist:
 
-BOOT.SHUTDOWN.SERVICE
+- `BOOT.SHUTDOWN.SERVICE` : If you don't know, leave it as is
+- `SCRIPT_PATH` : the path where the boot-shutdown.sh script is stored.
+- `LOG_PATH` : the path where the logs are stored. If you don't care about logs, use: /tmp
 
-- `BOOT.SHUTDOWN.SERVICE` : This required key uniquely identifies the job. If you don't have multiple vbox you can leave it as is.
-- `PATH_TO` : the path where the vbox.sh script is stored.
-- `WORKING_DIRECTORY_PATH` : the path where the logs are stored. If you don't care about it, use: /tmp
-- `USERNAME` : This is your username.
+Then copy the file `boot-shutdown-script.plist` into `/Library/LaunchDaemons/`
 
-Then copy the file `boot-shutdown-script.list` into `/Library/LaunchDaemons/`
-
-    sudo cp boot-shutdown-script.list  /Library/LaunchDaemons/
+    sudo cp boot-shutdown-script.plist  /Library/LaunchDaemons/
 
 When you want start the virtual machine type the following command:
 
-    sudo launchctl load -w /Library/LaunchDaemons/boot-shutdown-script.list
+    sudo launchctl load -w /Library/LaunchDaemons/boot-shutdown-script.plist
 
 If you want stop the VM (and the  you should type the following command:
 
-    sudo launchctl unload -w /Library/LaunchDaemons/boot-shutdown-script.list
+    sudo launchctl unload -w /Library/LaunchDaemons/boot-shutdown-script.plist
 
 The VM will be started machine everytime MAC OS X boots.
-Set into `boot-shutdown-script.list` the field `RunAtLoad` to `false` if you don't want that the VM starts automatically every time your mac os x boots.
+Set into `boot-shutdown-script.plist` the field `RunAtLoad` to `false` if you don't want that the VM starts automatically every time your mac os x boots.
 When RunAtLoad is set to false, after the load you must start and stop the VM using the following command:
 
     sudo launchctl start BOOT.SHUTDOWN.SERVICE
