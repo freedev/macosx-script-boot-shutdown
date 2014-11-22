@@ -23,7 +23,7 @@ If you want stop the VM (and the  you should type the following command:
 
     sudo launchctl unload -w /Library/LaunchDaemons/boot-shutdown-script.plist
 
-The VM will be started machine everytime MAC OS X boots.
+The script will be started machine at every host boot.
 Set into `boot-shutdown-script.plist` the field `RunAtLoad` to `false` if you don't want that the VM starts automatically every time your mac os x boots.
 When RunAtLoad is set to false, after the load you must start and stop the VM using the following command:
 
