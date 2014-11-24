@@ -1,5 +1,5 @@
-macosx-vbox-headless
-====================
+macosx-script-boot-shutdown
+===========================
 
 A simple Mac OS X configuration and bash script to execute some commands during boot/shutdown
 
