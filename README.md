@@ -1,7 +1,13 @@
 macosx-script-boot-shutdown
 ===========================
 
-A simple Mac OS X configuration and bash script to execute some commands during boot/shutdown
+This configuration is useful When you need to execute a shell script at Mac OS X boot or shutdown.
+
+There are two files:
+
+- boot-shutdown-script.plist: [Mac OS X daemon/agent configuration file (plist)][1]
+- boot-shutdown.sh: bash shell script
+
 
 ## Install
 
@@ -29,3 +35,6 @@ When RunAtLoad is set to false, after the load you must start and stop the scrip
 
     sudo launchctl start BOOT.SHUTDOWN.SERVICE
     sudo launchctl stop BOOT.SHUTDOWN.SERVICE
+
+  [1]: https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man5/launchd.plist.5.html
+    
