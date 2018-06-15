@@ -38,7 +38,7 @@ When RunAtLoad is set to false, after the load you must start and stop the scrip
 ## Useful links
 
 - [Daemons and Services Programming Guide][1]
-- [Launchd][2]
+- [What is Launchd][2]
 
 
   [1]: https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/BPSystemStartup/Chapters/Introduction.html
