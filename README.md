@@ -8,7 +8,7 @@ There are two files:
 - boot-shutdown-script.plist
 - boot-shutdown.sh: bash shell script
 
-## Install
+# Install
 
 You should customize the following placeholders inside the file boot-shutdown-script.plist:
 
