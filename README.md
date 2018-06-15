@@ -8,12 +8,6 @@ There are two files:
 - boot-shutdown-script.plist
 - boot-shutdown.sh: bash shell script
 
-## Useful links
-
-- [Daemons and Services Programming Guide][1]
-- [Launchd][2]
-
-
 ## Install
 
 You should customize the following placeholders inside the file boot-shutdown-script.plist:
@@ -40,6 +34,12 @@ When RunAtLoad is set to false, after the load you must start and stop the scrip
 
     sudo launchctl start BOOT.SHUTDOWN.SERVICE
     sudo launchctl stop BOOT.SHUTDOWN.SERVICE
+
+## Useful links
+
+- [Daemons and Services Programming Guide][1]
+- [Launchd][2]
+
 
   [1]: https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/BPSystemStartup/Chapters/Introduction.html
   [2]: http://www.launchd.info/ 
