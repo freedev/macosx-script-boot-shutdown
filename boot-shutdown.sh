@@ -25,7 +25,6 @@ function startup()
 }
 
 trap shutdown SIGTERM
-trap shutdown SIGKILL
 
 startup;
 
