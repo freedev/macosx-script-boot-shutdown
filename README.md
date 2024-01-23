@@ -59,6 +59,15 @@ When RunAtLoad is set to false, after the load you must start and stop the scrip
     sudo launchctl start BOOT.SHUTDOWN.SERVICE
     sudo launchctl stop BOOT.SHUTDOWN.SERVICE
 
+# After changing file boot-shutdown.sh
+
+unload and reload the service in order to have changes directly applied
+- open terminal
+- type : sudo launchctl unload -w /Library/LaunchDaemons/boot-shutdown-script.plist
+- type : sudo launchctl load -w /Library/LaunchDaemons/boot-shutdown-script.plist
+
+Alternatively just restart(reboot) twice and You're changes should be in effect.
+
 ## Useful links
 
 - [Daemons and Services Programming Guide][1]
