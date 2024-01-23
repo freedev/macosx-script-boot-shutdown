@@ -22,6 +22,8 @@ After the install is completed the script will be loaded
 This installscript will also check on previous installation. 
 Give the user the oportunity to stop or choose to remove the service from you're system.
 Then the user will be asked to reinstall or not.
+After the Install,Uninstall or Reinstall is done you will be asked to remove or not the
+git repo from you're pc.
 
 # Manual Install
 
