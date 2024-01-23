@@ -67,19 +67,17 @@ if [ "$TEST_PREVIOUS_INSTALL" == "BOOT.SHUTDOWN.SERVICE" ];then
 fi
 if [ -f "/Library/Logs/boot-shutdown-script-install.log" ];then
   echo "installog found"
-  INSTALLED_PLIST_PATH=`grep "PLIST_PATH" /Library/Logs/boot-shutdown-script-install.log | sed s/"PLIST_PATH = "//g`
-  echo $INSTALLED_PLIST_PATH
   INSTALLED_SCRIPTS_PATH=`grep "SCRIPTS_PATH" /Library/Logs/boot-shutdown-script-install.log | sed s/"SCRIPTS_PATH = "//g`
-  echo $INSTALLED_SCRIPTS_PATH
+  # echo $INSTALLED_SCRIPTS_PATH
   INSTALLED_LOGS_PATH=`grep "LOGS_PATH" /Library/Logs/boot-shutdown-script-install.log | sed s/"LOGS_PATH = "//g`
-  echo $INSTALLED_LOGS_PATH
-  if [ -f $INSTALLED_PLIST_PATH/boot-shutdown-script.plist ] && [ -f $INSTALLED_SCRIPTS_PATH/boot-shutdown.sh ];then
+  # echo $INSTALLED_LOGS_PATH
+  if [ -f $PLIST_PATH/boot-shutdown-script.plist ] && [ -f $INSTALLED_SCRIPTS_PATH/boot-shutdown.sh ];then
     SERVICE="$SERVICE""installed"
     echo "Service installed"
     echo "########################################################################################################"
     echo "### !!! If You wan't to reinstall this service after uninstalling do You wan't to keep You're path's !!!"
     echo "###"
-    echo "### PLIST_PATH = $INSTALLED_PLIST_PATH"
+    echo "### PLIST_PATH = $PLIST_PATH"
     echo "### SCRIPTS_PATH = $INSTALLED_SCRIPTS_PATH"
     echo "### LOGS_PATH = $INSTALLED_LOGS_PATH"
     echo "###"
@@ -88,7 +86,6 @@ if [ -f "/Library/Logs/boot-shutdown-script-install.log" ];then
     echo ""
     read KEEP_PATHS
     if [ "$KEEP_PATHS" == "Yes" ];then
-      PLIST_PATH="$INSTALLED_PLIST_PATH"
       SCRIPTS_PATH="$INSTALLED_SCRIPTS_PATH"
       LOGS_PATH="$INSTALLED_LOGS_PATH"
       echo "paths changed to those from previous installation"
@@ -102,11 +99,10 @@ if [ -f "/Library/Logs/boot-shutdown-script-install.log" ];then
     rm -f /Library/Logs/boot-shutdown-script-install.log
   fi
 else
-  #echo "No installog found try to find installation on default locations"
+  # echo "No installog found try to find installation on default locations"
   if [ -f $PLIST_PATH/boot-shutdown-script.plist ] && [ -f $SCRIPTS_PATH/boot-shutdown.sh ];then
     echo "Did found installation on default location whitout installog"
     SERVICE="$SERVICE""installed"
-    INSTALLED_PLIST_PATH=$PLIST_PATH
     INSTALLED_SCRIPTS_PATH=$SCRIPTS_PATH
     INSTALLED_LOGS_PATH=$LOGS_PATH
   else
@@ -143,11 +139,11 @@ if [ "$SERVICE" == "loadedinstalled" ] || [ "$SERVICE" == "installed" ];then
     exit
   fi    
   if [ "$SERVICE" == "loadedinstalled" ];then
-    launchctl unload -w $INSTALLED_PLIST_PATH/boot-shutdown-script.plist
+    launchctl unload -w $PLIST_PATH/boot-shutdown-script.plist
     echo "unloading service"
   fi
   echo "removing previous installation"
-  rm -f $INSTALLED_PLIST_PATH/boot-shutdown-script.plist
+  rm -f $PLIST_PATH/boot-shutdown-script.plist
   rm -f $INSTALLED_SCRIPTS_PATH/boot-shutdown.sh
   if [ -f "$INSTALLED_LOGS_PATH/boot-shutdown.log" ];then
     rm -f $INSTALLED_LOGS_PATH/boot-shutdown.log
@@ -204,30 +200,10 @@ echo "### The file owner becomes You : $SUDO_USER !!!!"
 echo "### To edit the boot-shutdown.sh you will need to use a script file editor who can run with sudo"
 echo "### On board you all have the vi editor, can be used with sudo vi boot-shutdown.sh"
 echo "### Or others script file editors such as gedit as a Linux user my favorite"
-echo "### I well will give you the opportunity to change the locations during installation"
-echo "### Only use full hard target paths if You change one of the locations"
+echo "### I well will give you the opportunity to change the locations off"
+echo "### boot-shutdown.sh scriot file and logs files"
+echo "### Use only full hard target paths if You change one of the locations"
 echo "### ###############################################################################################"
-echo ""
-echo "########################################################################################################"
-echo "### $PLIST_PATH = The default plistfile location Do You wan't to change it ? Yes/No default No"
-echo "########################################################################################################"
-read ANSWER
-if [ "$ANSWER" == "Yes" ];then
-  echo ""
-  echo "########################################"
-  echo "### Insert the wanted Location"
-  echo "########################################"
-  read ANSWER
-  if [ -d "$ANSWER" ];then
-    PLIST_PATH="$ANSWER"
-  else
-    echo ""
-    echo "#######################################################################"
-	echo "### Not a correct path keeping default $PLIST_PATH"
-    echo "#######################################################################"
-  fi
-  ANSWER=""
-fi
 echo ""
 echo "######################################################################################################"
 echo "### $SCRIPTS_PATH = The default boot-shutdown.sh location Do You wan't to change it ? Yes/No default No"
@@ -236,7 +212,7 @@ read ANSWER
 if [ "$ANSWER" == "Yes" ];then
   echo "#########################################################################################"
   echo "### Insert the wanted Location"
-  echo "!!!! If You set it in director $HOME/ and above"
+  echo "!!!! If You set it in directory $HOME/ and above"
   echo "The user owner off file will become You:  $SUDO_USER !!!"
   echo "#########################################################################################"
   read ANSWER
