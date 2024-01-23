@@ -46,7 +46,7 @@ function rmgitrepo()
   echo ""
   read ANSWER
   if [ "$ANSWER" == "Yes" ] || [ "$ANSWER" == "yes" ];then
-    #rm -rf $GIT_REPO_DIR
+    rm -rf $GIT_REPO_DIR
     echo ""
     echo "################################################################################"
     echo "### GIT repository macosx-script-boot-shutdown is removed from you're pc"
