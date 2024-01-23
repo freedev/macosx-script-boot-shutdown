@@ -33,6 +33,27 @@ else
   exit
 fi
 
+function rmgitrepo()
+{
+  echo ""
+  echo "####################################################################################"
+  echo "### Install,Uninstall and or reinstall is done"
+  echo "### Or you aborted installation"
+  echo "### Do You wan't to remove the cloned git repository:"
+  echo "### $GIT_REPO_DIR  ?"
+  echo "### Answer Yes or No ***** !!! Default is NO !!! ******"
+  echo "####################################################################################"
+  echo ""
+  read ANSWER
+  if [ "$ANSWER" == "Yes" ] || [ "$ANSWER" == "yes" ];then
+    #rm -rf $GIT_REPO_DIR
+    echo ""
+    echo "################################################################################"
+    echo "### GIT repository macosx-script-boot-shutdown is removed from you're pc"
+    echo "################################################################################"
+  fi
+}
+
 echo ""
 echo "########################################################################"
 echo "### Git repository macosx-script-boot-shutdown is cloned and found"
@@ -166,8 +187,8 @@ if [ "$SERVICE" == "loadedinstalled" ] || [ "$SERVICE" == "installed" ];then
     echo "#########################################################"
     echo "### You selected to NOT Reinstall The service"
     echo "### Previous installation is removed"
-    echo "### Bye Bye."
     echo "#########################################################"
+    rmgitrepo
     exit
   fi
 else
@@ -318,6 +339,7 @@ if [ -f "$PLIST_PATH/boot-shutdown-script.plist" ];then
   echo "### To load type: sudo launchctl load -w $PLIST_PATH/boot-shutdown-script.plist "
   echo "### Alternatively reboot two times to see the effects of the change."
   echo "###########################################################################################################"
+  rmgitrepo
 else
   echo ""
   echo "###############################################################"
