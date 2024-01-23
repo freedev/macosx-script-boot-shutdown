@@ -310,7 +310,7 @@ echo "######################################################" > $INSTALL_LOG
 echo "Boot-shutdown-Install-report"  >> $INSTALL_LOG
 echo "######################################################" >> $INSTALL_LOG
 echo "" >> $INSTALL_LOG
-echo "echo `date "+%Y-%m-%d %H:%M:%S"` $SUDO_USER Installed macosx-script-boot-shutdown" >> $INSTALL_LOG
+echo "`date "+%Y-%m-%d %H:%M:%S"` $SUDO_USER Installed macosx-script-boot-shutdown" >> $INSTALL_LOG
 echo "" >> $INSTALL_LOG
 echo "" >> $INSTALL_LOG
 echo "Install Locations" >> $INSTALL_LOG
