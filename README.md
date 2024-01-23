@@ -1,7 +1,29 @@
-macosx-script-boot-shutdown
+MacOsx-script-boot-shutdown
 ===========================
 
-This configuration is useful when you need to execute a shell script at Mac OS X boot or shutdown.
+This configuration is useful when you need to execute a shell script or command at Mac OS X boot or shutdown.
+
+# Automatic Install and or Uninstall with install.sh
+
+install.sh Is a user ineractif script to be runned as super user. How to use :
+- open terminal
+- type : cd ~
+- type : git clone https://github.com/christophecvr/macosx-script-boot-shutdown
+- type : sudo macosx-script-boot-shutdown/install.sh
+
+The script will install the files:
+
+- boot-shut-down-script.plist in path /Library/LaunchDaemons also adapt the target paths into the plist file.
+- boot-shutdown.sh in path /library/Scripts this path can be adapted by user during install.
+- log path location /Library/Logs this path can be adapted by user during install.
+
+After the install is completed the script will be loaded
+
+This installscript will also check on previous installation. 
+Give the user the oportunity to stop or choose to remove the service from you're system.
+Then the user will be asked to reinstall or not.
+
+# Manual Install
 
 There are two files:
 
